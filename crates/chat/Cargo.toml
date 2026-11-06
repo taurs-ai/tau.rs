@@ -1,0 +1,32 @@
+[package]
+name = "tau-chat"
+description = "Conversation types and chat-template rendering for tau.rs."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "tau_chat"
+path = "src/lib.rs"
+
+[dependencies]
+serde = "1"
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+sha2 = "0.10"
+
+# Pin the AST API used by message-content classification.
+[dependencies.minijinja]
+version = "=3.0.4"
+default-features = false
+features = [
+    "builtins", "macros", "adjacent_loop_items", "serde", "loop_controls",
+    "preserve_order", "debug", "unstable_machinery",
+]
+
+[dependencies.minijinja-contrib]
+version = "=3.0.4"
+default-features = false
+features = ["pycompat"]
+
+[lints]
+workspace = true

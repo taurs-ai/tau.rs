@@ -1,0 +1,158 @@
+{
+  "artifact": {
+    "files_sha256": {
+      "config.json": "07f96d57c818818e6f3d4ad44ec17629328c6b8c6066b4e55e801bdee4e03bf4",
+      "fixture_provenance.json": "7e223056b7eeace45de0f197dda66328e84695e9972582dc639234aeb0ec6f76",
+      "model-00001-of-00003.safetensors": "d7ef9ec9d337ac9dbef83bab2019115a313303be393244f93041779fe9b4be41",
+      "model-00002-of-00003.safetensors": "b033a8eb9d31fe2c315a48d03e300430442dda9775d4d15fafabf398096515e2",
+      "model-00003-of-00003.safetensors": "89c48900b7c0f2b19a4e5322985c3715879c38422deba3e57212e22a863a5d23",
+      "model.safetensors.index.json": "5ea04db20ce0f6ea113fff2d07c76064049ce4c3db149f5683449c105291e36d"
+    },
+    "fixture": "Qwen3.8-27B miniature dense development checkpoint",
+    "production_model_id": "Qwen/Qwen3.8-27B",
+    "production_model_revision": "72a217afab8029b39e4af1c7273a829995a3dbaf",
+    "random_seed": 12345
+  },
+  "generator": {
+    "attention_implementation": "eager",
+    "device": "cpu",
+    "dtype": "float32",
+    "python_version": "3.12.13",
+    "script": "generate_qwen3_5_dense_reference.py",
+    "torch_threads": 1,
+    "torch_version": "2.13.0+cpu",
+    "transformers_version": "5.15.1"
+  },
+  "input": {
+    "decode_offset": 2,
+    "decode_token_id": 248044,
+    "prefill_token_ids": [
+      248045,
+      248046
+    ],
+    "use_cache": true
+  },
+  "outputs": {
+    "cached_decode": {
+      "argmax_token_id": 176536,
+      "slice": {
+        "start": 0,
+        "values": [
+          -0.6623797416687012,
+          -0.036769211292266846,
+          -0.310092568397522,
+          -0.39283424615859985,
+          0.03588876128196716,
+          0.16880418360233307,
+          0.7582672238349915,
+          -0.3234819769859314,
+          -0.20545785129070282,
+          0.0527152419090271,
+          -0.3818565607070923,
+          0.8703885078430176,
+          0.4385392963886261,
+          -0.24992696940898895,
+          0.5615601539611816,
+          0.3845016062259674
+        ]
+      },
+      "top_k": [
+        {
+          "token_id": 176536,
+          "value": 1.5475341081619263
+        },
+        {
+          "token_id": 165648,
+          "value": 1.4857594966888428
+        },
+        {
+          "token_id": 129919,
+          "value": 1.4722120761871338
+        },
+        {
+          "token_id": 50059,
+          "value": 1.467099666595459
+        },
+        {
+          "token_id": 227047,
+          "value": 1.4468623399734497
+        },
+        {
+          "token_id": 161192,
+          "value": 1.4309723377227783
+        },
+        {
+          "token_id": 120915,
+          "value": 1.428213357925415
+        },
+        {
+          "token_id": 48703,
+          "value": 1.408601999282837
+        }
+      ]
+    },
+    "prefill": {
+      "argmax_token_id": 87299,
+      "slice": {
+        "start": 0,
+        "values": [
+          -0.13022589683532715,
+          0.6074551343917847,
+          -0.4847280979156494,
+          -0.21068774163722992,
+          0.2165076732635498,
+          -0.3330782651901245,
+          0.35331130027770996,
+          0.28441667556762695,
+          -0.1486576348543167,
+          -0.36455628275871277,
+          0.16149237751960754,
+          0.39369434118270874,
+          -0.4402998089790344,
+          0.31408509612083435,
+          -0.03721284866333008,
+          -0.24103903770446777
+        ]
+      },
+      "top_k": [
+        {
+          "token_id": 87299,
+          "value": 1.752280592918396
+        },
+        {
+          "token_id": 220319,
+          "value": 1.6186790466308594
+        },
+        {
+          "token_id": 218574,
+          "value": 1.5747358798980713
+        },
+        {
+          "token_id": 220532,
+          "value": 1.4774677753448486
+        },
+        {
+          "token_id": 51339,
+          "value": 1.4510767459869385
+        },
+        {
+          "token_id": 117684,
+          "value": 1.448167324066162
+        },
+        {
+          "token_id": 35230,
+          "value": 1.4166029691696167
+        },
+        {
+          "token_id": 248263,
+          "value": 1.4094058275222778
+        }
+      ]
+    }
+  },
+  "schema_version": 1,
+  "tolerance": {
+    "absolute": 2e-05,
+    "relative": 0.0
+  }
+}

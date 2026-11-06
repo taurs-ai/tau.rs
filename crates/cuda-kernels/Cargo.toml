@@ -1,0 +1,16 @@
+[package]
+name = "tau-cuda-kernels"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+build = "build.rs"
+
+[lib]
+name = "tau_cuda_kernels"
+path = "src/lib.rs"
+
+[build-dependencies]
+cudaforge = "0.1.2"
+
+[lints]
+workspace = true

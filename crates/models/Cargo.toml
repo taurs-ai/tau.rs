@@ -1,0 +1,29 @@
+[package]
+name = "tau-models"
+description = "Model architectures, checkpoint contracts and execution state for tau.rs."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "tau_models"
+path = "src/lib.rs"
+
+[dependencies]
+candle = { package = "candle-core", version = "0.11.0", features = ["cuda"] }
+candle-nn = { version = "0.11.0", features = ["cuda"] }
+candle-transformers = { version = "0.11.0", features = ["cuda"] }
+half = "2"
+memmap2 = "0.9"
+safetensors = "0.8.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+tokenizers = "0.23.1"
+tau-cuda-kernels = { path = "../cuda-kernels" }
+tau-metrics = { path = "../metrics" }
+
+[dev-dependencies]
+sha2 = "0.10"
+
+[lints]
+workspace = true

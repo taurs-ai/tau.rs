@@ -1,0 +1,21 @@
+[package]
+name = "tau-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "tau_server"
+path = "src/lib.rs"
+
+[[bin]]
+name = "tau-server"
+path = "src/main.rs"
+
+[dependencies]
+tau-engine = { path = "../engine" }
+tau-chat = { path = "../chat" }
+serde_json = { version = "1", features = ["preserve_order", "float_roundtrip"] }
+
+[lints]
+workspace = true

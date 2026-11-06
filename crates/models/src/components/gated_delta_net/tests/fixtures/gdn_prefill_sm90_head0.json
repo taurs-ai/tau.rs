@@ -1,0 +1,61 @@
+{
+  "scope": "Weight-free first-head GDN operands from the first 16 tokens of case-02-255.",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "revision": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "extraction_model": "First trained four-layer fixture; layer zero matches the source checkpoint.",
+  "reference_runtime": "sglang 0.5.23",
+  "gpu": "NVIDIA H200 SM90",
+  "prefill_backend": "flashinfer",
+  "source_tensors": {
+    "q": {
+      "shape": [
+        1,
+        255,
+        16,
+        128
+      ],
+      "sha256_f32": "50988868f0066a47ae00632af69709d0718f71aa6da101a65d2b2d0cfd466b9d"
+    },
+    "k": {
+      "shape": [
+        1,
+        255,
+        16,
+        128
+      ],
+      "sha256_f32": "453c33a84eec0b51fee941bad04173629b8e0e09aa0e58d49ef47b63e9595260"
+    },
+    "v": {
+      "shape": [
+        1,
+        255,
+        32,
+        128
+      ],
+      "sha256_f32": "12dc79a9edc6dc03dd7518c4b6107c67701c5bd9aeb066bd8091d8c7558d189e"
+    },
+    "g": {
+      "shape": [
+        1,
+        255,
+        32
+      ],
+      "sha256_f32": "84433dcb3610e117ae951c1f0b04b4b149c0595fca4d42baad8d2b011e3b665b"
+    },
+    "beta": {
+      "shape": [
+        1,
+        255,
+        32
+      ],
+      "sha256_f32": "08711905eb5fc31f6931d73de88e070a07bb0f9a2b36efd52477d91c9f72abda"
+    }
+  },
+  "fixture_sha256": "2eaa9efda8064925ef3e5e059ebedc1089033ba271db186e26fca956bc2ae6ab",
+  "initial_state": "Fresh prefix; all-zero FP32 state, 1x1x128x128.",
+  "contracts": [
+    "Q/K/V are BF16 operator inputs, before L2 normalization.",
+    "G is FP32 log decay. Beta is FP32 storage containing BF16-rounded sigmoid values.",
+    "Tests compare native prefill with the independent composed FP32 path while retaining the BF16 normalized-Q/K boundary."
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "scope": "32 real BF16 router rows promoted losslessly to FP32, with actual SGLang expert IDs/FP32 weights. No checkpoint weights.",
+  "model": "Qwen/Qwen3.6-35B-A3B",
+  "revision": "995ad96eacd98c81ed38be0c5b274b04031597b0",
+  "reference": "SGLang 0.5.23; H200 SM90; default FlashInfer GDN prefill; case-02-255.",
+  "source_rows": 10200,
+  "curated_rows": [
+    {
+      "layer": 0,
+      "token": 0
+    },
+    {
+      "layer": 0,
+      "token": 1
+    },
+    {
+      "layer": 0,
+      "token": 128
+    },
+    {
+      "layer": 0,
+      "token": 254
+    },
+    {
+      "layer": 3,
+      "token": 0
+    },
+    {
+      "layer": 3,
+      "token": 1
+    },
+    {
+      "layer": 3,
+      "token": 128
+    },
+    {
+      "layer": 3,
+      "token": 254
+    },
+    {
+      "layer": 7,
+      "token": 0
+    },
+    {
+      "layer": 7,
+      "token": 1
+    },
+    {
+      "layer": 7,
+      "token": 128
+    },
+    {
+      "layer": 7,
+      "token": 254
+    },
+    {
+      "layer": 11,
+      "token": 0
+    },
+    {
+      "layer": 11,
+      "token": 1
+    },
+    {
+      "layer": 11,
+      "token": 128
+    },
+    {
+      "layer": 11,
+      "token": 254
+    },
+    {
+      "layer": 15,
+      "token": 0
+    },
+    {
+      "layer": 15,
+      "token": 1
+    },
+    {
+      "layer": 15,
+      "token": 128
+    },
+    {
+      "layer": 15,
+      "token": 254
+    },
+    {
+      "layer": 23,
+      "token": 0
+    },
+    {
+      "layer": 23,
+      "token": 1
+    },
+    {
+      "layer": 23,
+      "token": 128
+    },
+    {
+      "layer": 23,
+      "token": 254
+    },
+    {
+      "layer": 31,
+      "token": 0
+    },
+    {
+      "layer": 31,
+      "token": 1
+    },
+    {
+      "layer": 31,
+      "token": 128
+    },
+    {
+      "layer": 31,
+      "token": 254
+    },
+    {
+      "layer": 39,
+      "token": 0
+    },
+    {
+      "layer": 39,
+      "token": 1
+    },
+    {
+      "layer": 39,
+      "token": 128
+    },
+    {
+      "layer": 39,
+      "token": 254
+    }
+  ],
+  "eighth_slot_tie_rows": 3,
+  "fixture_sha256": "2c91aded20af64c7455db85dd10b94e1d9262f23797ee5ef5a341fa77e6bd70c",
+  "ids_contract": "Exact descending score, lower expert ID on ties.",
+  "weights_contract": "Use the unchanged frozen MoE prefill contract FP32 weights budget: absolute floor 1e-7 plus relative 1e-5. Report exact differences and both paths against independent FP64 selected-softmax math."
+}

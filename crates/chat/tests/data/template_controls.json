@@ -1,0 +1,490 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "packages": {
+      "sglang": "0.5.22",
+      "transformers": "5.19.0",
+      "tokenizers": "0.23.2",
+      "jinja2": "3.1.6"
+    },
+    "reference_sha256": "3f93238c23dbb76e82bbecd1a1f026b6bae929fe3d30e8ac5b908c259127ab35"
+  },
+  "cases": [
+    {
+      "name": "27b_default",
+      "request": {},
+      "expected": {}
+    },
+    {
+      "name": "27b_explicit_thinking_on",
+      "request": {
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        }
+      },
+      "expected": {
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "27b_thinking_off",
+      "request": {
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "expected": {
+        "enable_thinking": false
+      }
+    },
+    {
+      "name": "27b_top_level_low",
+      "request": {
+        "reasoning_effort": "low"
+      },
+      "expected": {
+        "reasoning_effort": "low",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "27b_kwargs_override_effort",
+      "request": {
+        "reasoning_effort": "xhigh",
+        "chat_template_kwargs": {
+          "reasoning_effort": "medium"
+        }
+      },
+      "expected": {
+        "reasoning_effort": "medium",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "27b_top_none",
+      "request": {
+        "reasoning_effort": "none"
+      },
+      "expected": {
+        "reasoning_effort": "none",
+        "thinking": false,
+        "enable_thinking": false
+      }
+    },
+    {
+      "name": "27b_checkpoint_rejects_high",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "high"
+        }
+      },
+      "expected": {
+        "reasoning_effort": "high"
+      }
+    },
+    {
+      "name": "27b_null_effort_rejected",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": null
+        }
+      },
+      "expected": {
+        "reasoning_effort": null
+      }
+    },
+    {
+      "name": "27b_history_drops_thinking",
+      "request": {
+        "chat_template_kwargs": {
+          "preserve_thinking": false
+        }
+      },
+      "expected": {
+        "preserve_thinking": false
+      }
+    },
+    {
+      "name": "null_controls",
+      "request": {
+        "reasoning_effort": null,
+        "reasoning": null,
+        "chat_template_kwargs": null
+      },
+      "expected": {}
+    },
+    {
+      "name": "empty_controls",
+      "request": {
+        "reasoning": {},
+        "chat_template_kwargs": {}
+      },
+      "expected": {}
+    },
+    {
+      "name": "effort_none_explicit_on",
+      "request": {
+        "reasoning_effort": "none",
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        }
+      },
+      "expected": {
+        "reasoning_effort": "none",
+        "enable_thinking": true,
+        "thinking": false
+      }
+    },
+    {
+      "name": "effort_low_explicit_off",
+      "request": {
+        "reasoning_effort": "low",
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        }
+      },
+      "expected": {
+        "reasoning_effort": "low",
+        "enable_thinking": false,
+        "thinking": true
+      }
+    },
+    {
+      "name": "effort_kwargs_null",
+      "request": {
+        "reasoning_effort": "low",
+        "chat_template_kwargs": {
+          "reasoning_effort": null,
+          "thinking": null,
+          "enable_thinking": null
+        }
+      },
+      "expected": {
+        "reasoning_effort": null,
+        "thinking": null,
+        "enable_thinking": null
+      }
+    },
+    {
+      "name": "alias_effort_wins",
+      "request": {
+        "reasoning_effort": "xhigh",
+        "reasoning": {
+          "effort": "low"
+        }
+      },
+      "expected": {
+        "reasoning_effort": "low",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "alias_alternate",
+      "request": {
+        "reasoning": {
+          "reasoning_effort": "medium",
+          "enable": true
+        }
+      },
+      "expected": {
+        "reasoning_effort": "medium",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "alias_effort_null_falls_back",
+      "request": {
+        "reasoning": {
+          "effort": null,
+          "reasoning_effort": "low"
+        }
+      },
+      "expected": {
+        "reasoning_effort": "low",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "alias_enabled",
+      "request": {
+        "reasoning": {
+          "enabled": true
+        }
+      },
+      "expected": {
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "alias_disabled",
+      "request": {
+        "reasoning": {
+          "enabled": false
+        }
+      },
+      "expected": {}
+    },
+    {
+      "name": "alias_effort_beats_disabled",
+      "request": {
+        "reasoning": {
+          "effort": "medium",
+          "enabled": false
+        }
+      },
+      "expected": {
+        "reasoning_effort": "medium",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "alias_none_beats_enabled",
+      "request": {
+        "reasoning": {
+          "effort": "none",
+          "enabled": true
+        }
+      },
+      "expected": {
+        "reasoning_effort": "none",
+        "thinking": false,
+        "enable_thinking": false
+      }
+    },
+    {
+      "name": "alias_enable_precedence",
+      "request": {
+        "reasoning": {
+          "enabled": false,
+          "enable": true
+        }
+      },
+      "expected": {}
+    },
+    {
+      "name": "all_precedence",
+      "request": {
+        "reasoning_effort": "xhigh",
+        "reasoning": {
+          "effort": "low"
+        },
+        "chat_template_kwargs": {
+          "reasoning_effort": "medium",
+          "enable_thinking": false
+        }
+      },
+      "expected": {
+        "reasoning_effort": "medium",
+        "enable_thinking": false,
+        "thinking": true
+      }
+    },
+    {
+      "name": "custom_one",
+      "request": {
+        "chat_template_kwargs": {
+          "custom": {
+            "z": 1,
+            "a": 1.0,
+            "big": 9007199254740993,
+            "u": "你好\n<&>",
+            "list": [
+              true,
+              null,
+              2.5
+            ]
+          }
+        }
+      },
+      "expected": {
+        "custom": {
+          "z": 1,
+          "a": 1.0,
+          "big": 9007199254740993,
+          "u": "你好\n<&>",
+          "list": [
+            true,
+            null,
+            2.5
+          ]
+        }
+      }
+    },
+    {
+      "name": "custom_two",
+      "request": {
+        "chat_template_kwargs": {
+          "custom": "different"
+        }
+      },
+      "expected": {
+        "custom": "different"
+      }
+    },
+    {
+      "name": "kwargs_typed_values",
+      "request": {
+        "chat_template_kwargs": {
+          "enable_thinking": "false",
+          "thinking": false,
+          "preserve_thinking": false
+        }
+      },
+      "expected": {
+        "enable_thinking": "false",
+        "thinking": false,
+        "preserve_thinking": false
+      }
+    },
+    {
+      "name": "numeric_zero",
+      "request": {
+        "reasoning_effort": 0
+      },
+      "expected": {
+        "reasoning_effort": 0.0,
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "numeric_half",
+      "request": {
+        "reasoning_effort": 0.5
+      },
+      "expected": {
+        "reasoning_effort": 0.5,
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "numeric_max",
+      "request": {
+        "reasoning_effort": 0.99
+      },
+      "expected": {
+        "reasoning_effort": 0.99,
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "numeric_string",
+      "request": {
+        "reasoning_effort": " 0.5 "
+      },
+      "expected": {
+        "reasoning_effort": 0.5,
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "kwargs_arbitrary_effort",
+      "request": {
+        "chat_template_kwargs": {
+          "reasoning_effort": "custom-tier"
+        }
+      },
+      "expected": {
+        "reasoning_effort": "custom-tier"
+      }
+    },
+    {
+      "name": "generic_tier_minimal",
+      "request": {
+        "reasoning_effort": "minimal"
+      },
+      "expected": {
+        "reasoning_effort": "minimal",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "generic_tier_medium",
+      "request": {
+        "reasoning_effort": "medium"
+      },
+      "expected": {
+        "reasoning_effort": "medium",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "generic_tier_high",
+      "request": {
+        "reasoning_effort": "high"
+      },
+      "expected": {
+        "reasoning_effort": "high",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "generic_tier_xhigh",
+      "request": {
+        "reasoning_effort": "xhigh"
+      },
+      "expected": {
+        "reasoning_effort": "xhigh",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "generic_tier_max",
+      "request": {
+        "reasoning_effort": "max"
+      },
+      "expected": {
+        "reasoning_effort": "max",
+        "thinking": true,
+        "enable_thinking": true
+      }
+    },
+    {
+      "name": "custom_number_formats",
+      "request": {
+        "chat_template_kwargs": {
+          "custom": [
+            1e-07,
+            1e-06,
+            1e-05,
+            0.0001,
+            1000000000000000.0,
+            1e+16,
+            1e+20,
+            -0.0,
+            1.2345678901234567,
+            1.0
+          ]
+        }
+      },
+      "expected": {
+        "custom": [
+          1e-07,
+          1e-06,
+          1e-05,
+          0.0001,
+          1000000000000000.0,
+          1e+16,
+          1e+20,
+          -0.0,
+          1.2345678901234567,
+          1.0
+        ]
+      }
+    }
+  ]
+}

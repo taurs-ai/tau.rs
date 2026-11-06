@@ -1,0 +1,30 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/chat",
+    "crates/engine",
+    "crates/cuda-kernels",
+    "crates/metrics",
+    "crates/models",
+    "crates/server",
+]
+default-members = [
+    "crates/chat",
+    "crates/engine",
+    "crates/cuda-kernels",
+    "crates/metrics",
+    "crates/models",
+    "crates/server",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
